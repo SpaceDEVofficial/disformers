@@ -46,6 +46,8 @@ class DisFormersBot:
         return reply
 
     async def __hendle_messages(self, message: Message):
+        if message.author.bot:
+            return
         if message.content.startswith(self.prefix):
             async with message.channel.typing():
                 user_input = message.content[len(self.prefix):]
