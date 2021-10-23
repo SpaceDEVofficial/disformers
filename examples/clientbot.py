@@ -1,15 +1,17 @@
 import discord
 from DisFormers import DisFormersBot
 
-class MyClient(discord.Client):
-    async def on_ready(self):
-        print("Bot is ready.")
+client = discord.Client()
+disformerbot = DisFormersBot(client, prefix="!")
 
-    async def on_message(self,message):
-        disformerbot = DisFormersBot(client, prefix="!")
-        await disformerbot.client_message(message=message)
+@client.event
+async def on_ready():
+    print("Bot is ready.")
 
-client = MyClient()
+@client.event
+async def on_message(message):
+    await disformerbot.client_message(message=message)
+
 
 if __name__ == "__main__":
     client.run('token')

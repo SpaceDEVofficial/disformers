@@ -15,7 +15,7 @@ with pathlib.Path('requirements.txt').open() as requirements_txt:
 
 setuptools.setup(
     name="disformers",
-    version="0.0.4",
+    version="0.0.5",
     package_dir={"": "DisFormers"},
     packages=setuptools.find_namespace_packages(where="DisFormers"),
     author="SpaceDEV",
