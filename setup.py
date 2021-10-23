@@ -15,7 +15,7 @@ with pathlib.Path('requirements.txt').open() as requirements_txt:
 
 setuptools.setup(
     name="disformers",
-    version="0.0.1",
+    version="0.0.2",
     package_dir={"": "DisFormers"},
     packages=setuptools.find_namespace_packages(where="DisFormers"),
     author="SpaceDEV",
@@ -26,7 +26,7 @@ setuptools.setup(
     url="https://github.com/SpaceDEVofficial/disformers",
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: Apache-2.0 License"
+        "License :: OSI Approved :: Apache Software License"
     ],
     python_requires='>=3.7',
     install_requires=[
