@@ -1,22 +1,28 @@
 # disformers
  Huggingface transformers for discord
 
+# install
+```cmd
+pip install -U disformers
+```
+
 # example
 see [example](examples) folder
 
 - use client
 ```python
 import discord
-from DisFormers import DisFormersBot
+from disformers.DisFormers import DisFormersBot
 
 class MyClient(discord.Client):
     async def on_ready(self):
         print("Bot is ready.")
 
+    async def on_message(self,message):
+        disformerbot = DisFormersBot(client, prefix="!")
+        await disformerbot.client_message(message=message)
+
 client = MyClient()
-DisFormersBot(client,prefix="!") 
-#DisFormersBot(client,prefix="!",languague="en") default languague is English
-# you can choose English(en) or Korean(ko) languague option
 
 if __name__ == "__main__":
     client.run('token')
@@ -26,7 +32,7 @@ if __name__ == "__main__":
 ```python
 import discord
 from discord.ext import commands
-from DisFormers import DisFormersBot
+from disformers.DisFormers import DisFormersBot
 
 class MyBot(commands.Bot):
     def __init__(self, *args, **kwargs):
@@ -44,3 +50,7 @@ DisFormersBot(my_bot,prefix="!")
 if __name__ == "__main__":
     my_bot.run("token")
 ```
+
+# contact
+- [Discord](https://discord.gg/Jk6VRvsnqa)
+- [Email](mailto:support@spacedev.space)

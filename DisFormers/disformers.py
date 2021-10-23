@@ -7,19 +7,18 @@ from typing import Union
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import os
 from discord import (
-    Client,
-    Message
+    Message,
+    Client
 )
-from discord.ext.commands import Bot
+from discord.ext import commands
 
 class DisFormersBot:
     def __init__(
         self,
-        client: Union[Bot, Client],
+        client: Union[commands.Bot,Client],
         prefix: str,
         languague: str = "en",
     ):
-        global model_name
         if languague == "en":
             model_name = 'microsoft/DialoGPT-small'
             if not os.path.exists('./models/dialogpt'):
@@ -35,7 +34,8 @@ class DisFormersBot:
         self.tokenizer = AutoTokenizer.from_pretrained('./models/dialogpt')
         self.bot = client
         self.prefix = prefix
-        self.bot.add_listener(self.__hendle_messages, "on_message")
+        if type(self.bot) == commands.Bot:
+            self.bot.add_listener(self.__hendle_messages, "on_message")
 
 
     def __call__(self, inputs: str) -> str:
@@ -45,7 +45,16 @@ class DisFormersBot:
 
         return reply
 
+
     async def __hendle_messages(self, message: Message):
+        if message.author.bot:
+            return
+        if message.content.startswith(self.prefix):
+            async with message.channel.typing():
+                user_input = message.content[len(self.prefix):]
+                await message.reply(content=self(user_input))
+
+    async def client_message(self,message:Message):
         if message.author.bot:
             return
         if message.content.startswith(self.prefix):
