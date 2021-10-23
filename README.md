@@ -1,5 +1,6 @@
 # disformers
- Huggingface transformers for discord
+ - Huggingface transformers for discord
+ - base source [butyr/huggingface-transformer-chatbots](https://github.com/butyr/huggingface-transformer-chatbots)
 
 # install
 ```cmd
@@ -7,7 +8,8 @@ pip install -U disformers
 ```
 
 # example
-see [example](examples) folder
+- see [example](examples) folder
+
 
 - use client
 ```python
