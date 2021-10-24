@@ -53,7 +53,6 @@ class DisFormersBot:
             async with message.channel.typing():
                 user_input = message.content[len(self.prefix):]
             await message.reply(content=self(user_input))
-        await self.bot.process_commands(message=message)
 
     async def client_message(self,message:Message):
         if message.author.bot:

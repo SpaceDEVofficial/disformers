@@ -1,7 +1,7 @@
 import pathlib
 import setuptools
 import pkg_resources
-
+from DisFormers import __version__
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -15,7 +15,7 @@ with pathlib.Path('requirements.txt').open() as requirements_txt:
 
 setuptools.setup(
     name="disformers",
-    version="0.0.5",
+    version=__version__,
     package_dir={"": "DisFormers"},
     packages=setuptools.find_namespace_packages(where="DisFormers"),
     author="SpaceDEV",
@@ -56,6 +56,7 @@ setuptools.setup(
         'typing-extensions==3.10.0.2',
         'urllib3==1.26.7',
         'zipp==3.5.0',
-        "py-cord==1.7.3"
+        "py-cord==1.7.3",
+        "requests==2.26.0"
     ]
 )
